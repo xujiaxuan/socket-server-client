@@ -84,7 +84,24 @@ int main(int argc, char **argv)
 
 //    int fp = open(file_name, O_WRONLY|O_CREAT);
 //    if( fp < 0 )
-    FILE * fp = fopen(file_name,"w");
+	//int h;
+	//if(h=creat(file_name,0)==-1){
+    //    printf("File:\t%s Can Not create file\n", file_name);
+    //    exit(1);
+	//}
+
+	printf("File:\t%s\n", file_name);
+	int i = 0;
+	while(i < FILE_NAME_MAX_SIZE) {
+		if(file_name[i] == '/')
+			file_name[i] = '_';
+		if(file_name[i] == '.')
+			file_name[i] = 'X';
+		i++;
+	}
+	printf("File:\t%s\n", file_name);
+
+    FILE * fp = fopen(file_name,"wb");
     if(NULL == fp )
     {
         printf("File:\t%s Can Not Open To Write\n", file_name);
